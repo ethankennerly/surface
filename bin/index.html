@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="cache-control" content="no-cache, no-store">
+	<title>Pearl Dive</title>
+	<meta name="description" content="Collect pearls and resurface before you run out of air.  2-day game jam by Ethan Kennerly, April 25 - 27, 2014."/>
+	
+	<script src="js/swfobject.js"></script>
+	<script>
+		var flashvars = {
+		};
+		var params = {
+			menu: "false",
+			scale: "showAll",
+			allowFullscreen: "true",
+			allowScriptAccess: "always",
+			bgcolor: "",
+			wmode: "direct" // can cause issues with FP settings & webcam
+		};
+		var attributes = {
+			id:"surface"
+		};
+		swfobject.embedSWF(
+			"surface.swf", 
+			"altContent", "360", "640", "10.0.0", 
+			"expressInstall.swf", 
+			flashvars, params, attributes);
+	</script>
+	<style>
+		html, body {}
+		body { margin:0; background:111133}
+	</style>
+</head>
+<center>
+<body bgcolor=111133>
+<table>
+<tr><td width=33%></td><td width=33%>
+<br>
+<br>
+	<div id="altContent">
+		<h1>surface</h1>
+		<p><a href="http://www.adobe.com/go/getflashplayer">Get Adobe Flash player</a></p>
+	</div>
+</td><td width=33%>
+<pre><font color=white face="Comic Sans MS">
+Pearl Dive
+
+Collect pearls and resurface before you run out of air.
+
+Click to swim.
+
+2-day game jam by Ethan Kennerly.
+For Ludum Dare 29, April 25 to 27, 2014. 
+<a href=http://www.ludumdare.com/compo/ludum-dare-29/?action=preview&uid=3040 target=_new>ludumdare.com</a>
+At The Museum of Art and Digital Entertainment, 
+Oakland, California.  <a href=http://themade.org target=_new>themade.org</a>
+</font></pre>
+</td></tr></table>
+</center>
+</body>
+</html>

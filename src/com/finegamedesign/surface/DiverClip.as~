@@ -1,0 +1,8 @@
+package com.finegamedesign.surface
+{
+    import flash.display.MovieClip;
+
+    public final class DiverClip extends MovieClip
+    {
+    }
+}

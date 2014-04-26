@@ -1,16 +1,22 @@
 TODO
+	Click.  swim that way.
 	Wireframe.
-	See swim.
-	Pearl.  100 points.
-	Get all pearls.  fade to white.
-	3 Pearls.  100, 200, 400 points.
-	Help.
-	Click.  move that way.
 	Click.  see air gauge decrement.
 	Air gauge empty, float up, fade to black.
 	Underwater.  air gauge decrease.  At surface, air gauge increase.
+	Pearl.  100 points.
+	Get all pearls.  fade to white.
+	select level.
+	level 2:  3 Pearls.  100, 200, 400 points.
+	Help.
+	level 3
+	level 4
+	level 5
 	Animate swim.
 	Animate pearl.
+	Hear swim stroke.
+	Hear surface splash.
+	Hear pearl collection.
 	Air pocket.
 	Coral reef.  Collide. stop.
 	Shark moving back and forth periodically.  Collide.  float up, fade to black.

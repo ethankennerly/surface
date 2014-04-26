@@ -15,45 +15,40 @@ onoremap  gggHG
 nnoremap  gggHG
 vnoremap  "+y
 noremap  
-nnoremap  :update
+nnoremap  :updatevnoremap  :updateonoremap  :updatenmap  "+gP
 vnoremap  :update
 onoremap  :update
-nmap  "+gP
 omap  "+gP
+nmap  "+gP
 vnoremap  "+x
 noremap  
 noremap  u
-cnoremap   :simalt ~
+cnoremap   :simalt ~inoremap   :simalt ~inoremap Â  :simalt ~cnoremap Â  :simalt ~map Q gq
 inoremap   :simalt ~
-inoremap Â  :simalt ~
-cnoremap Â  :simalt ~
-map Q gq
-map <silent> \t :call MakeGreen()
+map <silent> \t :call MakeGreen()nmap gx <Plug>NetrwBrowseX
 nmap gx <Plug>NetrwBrowseX
-nnoremap <C-F4> c
-nnoremap <C-Tab> w
 nmap <S-Insert> "+gP
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+nnoremap <C-Tab> w
+nnoremap <C-F4> c
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)onoremap <C-F4> c
 onoremap <C-F4> c
 vnoremap <C-F4> c
 onoremap <C-Tab> w
 vnoremap <C-Tab> w
 vmap <S-Insert> 
 vnoremap <BS> d
-map <F5> :r !date /T:r !time /To
+map <F5> :r !date /T:r !time /Tovmap <C-Del> "*d
 vmap <C-Del> "*d
 vnoremap <S-Del> "+x
 vnoremap <C-Insert> "+y
 omap <S-Insert> "+gP
 cnoremap  gggHG
 inoremap  gggHG
-inoremap  :update
-inoremap  u
+inoremap  :updateinoremap  u
 cmap  +
 inoremap  
 inoremap  u
-noremap   :simalt ~
-noremap Â  :simalt ~
+noremap   :simalt ~noremap Â  :simalt ~let &cpo=s:cpo_save
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set backspace=indent,eol,start
@@ -82,61 +77,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +3 \project\ethan\todo.txt
-badd +1722 \project\ethan\2011.txt
-badd +2 \project\ethan\reading\ list\ 2007-10-191.txt
-badd +4663 \project\mmorpg\worldofwarcraft.txt
-badd +8 \project\globex\notes.txt
-badd +1965 \project\computer\computer.txt
-badd +1 \project\ethan\game\ 2008-01-11.txt
-badd +9 \Users\Ethan\_vimrc
-badd +1 \project\globex\sko.txt
-badd +6 \project\ethan\shopping_2009-05-19.txt
-badd +52 \project\ethan\project.txt
-badd +364 \project\china\china.txt
-badd +1 \Program\ Files\ (x86)\Vim\vim73\mswin.vim
-badd +463 \project\china\chinese.txt
-badd +14560 \project\ethan\cook_2009-08-15.txt
-badd +1787 \project\ethan\job_2011.txt
-badd +1642 \archive\amsterdam\amsterdam2009-06.txt
-badd +1033 \archive\ethan\health.txt
-badd +1 \project\computer\debugging.txt
-badd +576 \project\ethan\2012.txt
-badd +309 \project\ethan\san-francisco.txt
-badd +235 \project\game_tools\game_tools.txt
-badd +26 \project\ethan\murfreesboro.txt
-badd +179 \project\ethan\jade.txt
-badd +12 \project\ethan\raleigh.txt
-badd +1 \project\ethan\matthew_bike.txt
-badd +145 \project\ethan\home.txt
-badd +37 \project\ethan\bike.txt
-badd +13 \project\ethan\hostgator.txt
-badd +6 \Users\Ethan\vimfiles\ftplugin\python_kennerly.vim
-badd +6 \Users\Ethan\vimfiles\compiler\python.vim
-badd +1 \project\stocksurfer\stocksurfer.txt
-badd +24 \project\ethan\religion.txt
-badd +70 \project\ethan\politics.txt
-badd +145 \project\computer\javascript.txt
-badd +46 \project\computer\flash.txt
-badd +181 \project\ethan\life_invaders.txt
-badd +108 \archive\flash\actionscript.txt
-badd +118 \project\ethan\coconut_curry_in_a_pumpkin.txt
-badd +75 \project\ethan\flash.txt
-badd +55 \archive\android\android.txt
-badd +9994 \project\ethan\2013.txt
-badd +13 \project\ethan\aaron.txt
-badd +603 \project\ethan\health_2013.txt
-badd +4 \Users\Ethan\Documents\personal\mundane\banking\mcalpin.txt
-badd +88 \archive\findthefun\kennerly_bit_of_fun.txt
-badd +1361 \project\ethan\music_pandora_likes.txt
-badd +51 \project\ethan\music_rdio.txt
-badd +78 \project\ethan\sailing.txt
-badd +15 \project\ethan\sf.txt
-badd +16 \project\ethan\finance.txt
-badd +677 \project\ethan\game\ list\ 2005-10-04.txt
-badd +53 \project\ethan\2014.txt
-badd +1 \archive\flash\wedding-cake-builder\notes.txt
+badd +1 surface.vim
 badd +0 notes.txt
+badd +0 \project\ethan\game\ list\ 2005-10-04.txt
+badd +0 bin\index.html
 silent! argdel *
 edit notes.txt
 set splitbelow splitright
@@ -152,11 +96,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 67 + 66) / 133)
-exe '2resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
-exe '3resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 65 + 66) / 133)
+exe 'vert 1resize ' . ((&columns * 55 + 67) / 134)
+exe '2resize ' . ((&lines * 11 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 77 + 67) / 134)
+exe '3resize ' . ((&lines * 19 + 16) / 33)
+exe 'vert 3resize ' . ((&columns * 77 + 67) / 134)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -260,85 +204,25 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-89
+359
 normal zo
-103
+359
 normal zo
-119
+362
 normal zo
-128
+359
 normal zo
-148
+367
 normal zo
-229
+367
 normal zo
-232
+367
 normal zo
-270
-normal zo
-270
-normal zo
-273
-normal zo
-270
-normal zo
-276
-normal zo
-280
-normal zo
-280
-normal zo
-280
-normal zo
-303
-normal zo
-303
-normal zo
-303
-normal zo
-306
-normal zo
-306
-normal zo
-306
-normal zo
-319
-normal zo
-319
-normal zo
-319
-normal zo
-324
-normal zo
-326
-normal zo
-328
-normal zo
-334
-normal zo
-334
-normal zo
-334
-normal zo
-353
-normal zo
-353
-normal zo
-356
-normal zo
-353
-normal zo
-360
-normal zo
-361
-normal zo
-360
-normal zo
-let s:l = 352 - ((22 * winheight(0) + 15) / 31)
+let s:l = 367 - ((12 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-352
+367
 normal! 0
 wincmd w
 argglobal
@@ -447,88 +331,12 @@ setlocal wrap
 setlocal wrapmargin=0
 2
 normal zo
-58
-normal zo
-89
-normal zo
-103
-normal zo
-119
-normal zo
-128
-normal zo
-148
-normal zo
-229
-normal zo
-232
-normal zo
-270
-normal zo
-270
-normal zo
-273
-normal zo
-270
-normal zo
-276
-normal zo
-280
-normal zo
-280
-normal zo
-280
-normal zo
-303
-normal zo
-303
-normal zo
-303
-normal zo
-306
-normal zo
-306
-normal zo
-306
-normal zo
-319
-normal zo
-319
-normal zo
-319
-normal zo
-324
-normal zo
-326
-normal zo
-328
-normal zo
-334
-normal zo
-334
-normal zo
-334
-normal zo
-353
-normal zo
-353
-normal zo
-356
-normal zo
-353
-normal zo
-360
-normal zo
-361
-normal zo
-360
-normal zo
-let s:l = 18 - ((6 * winheight(0) + 7) / 15)
+let s:l = 3 - ((2 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-18
-normal! 013l
+3
+normal! 01l
 wincmd w
 argglobal
 edit notes.txt
@@ -634,95 +442,165 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-58
+64
 normal zo
-89
+95
 normal zo
-103
+109
 normal zo
-119
+125
 normal zo
-128
+134
 normal zo
-148
+154
 normal zo
-229
-normal zo
-232
-normal zo
-270
-normal zo
-270
-normal zo
-273
-normal zo
-270
+235
 normal zo
 276
 normal zo
-280
+279
 normal zo
-280
+276
 normal zo
-280
+309
 normal zo
-303
+309
 normal zo
-303
+309
 normal zo
-303
+330
 normal zo
-306
+359
 normal zo
-306
+359
 normal zo
-306
-normal zo
-319
-normal zo
-319
-normal zo
-319
-normal zo
-324
-normal zo
-326
-normal zo
-328
-normal zo
-334
-normal zo
-334
-normal zo
-334
-normal zo
-353
-normal zo
-353
-normal zo
-356
-normal zo
-353
-normal zo
-360
-normal zo
-361
-normal zo
-360
-normal zo
-let s:l = 150 - ((5 * winheight(0) + 7) / 15)
+let s:l = 134 - ((5 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-150
-normal! 023l
+134
+normal! 0
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 67 + 66) / 133)
-exe '2resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 2resize ' . ((&columns * 65 + 66) / 133)
-exe '3resize ' . ((&lines * 15 + 16) / 33)
-exe 'vert 3resize ' . ((&columns * 65 + 66) / 133)
+exe 'vert 1resize ' . ((&columns * 55 + 67) / 134)
+exe '2resize ' . ((&lines * 11 + 16) / 33)
+exe 'vert 2resize ' . ((&columns * 77 + 67) / 134)
+exe '3resize ' . ((&lines * 19 + 16) / 33)
+exe 'vert 3resize ' . ((&columns * 77 + 67) / 134)
+tabedit bin\index.html
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'html'
+setlocal filetype=html
+endif
+setlocal foldcolumn=0
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+set foldmethod=indent
+setlocal foldmethod=indent
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=8
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'html'
+setlocal syntax=html
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+let s:l = 49 - ((18 * winheight(0) + 16) / 32)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+49
+normal! 028l
 tabedit \project\ethan\game\ list\ 2005-10-04.txt
 set splitbelow splitright
 set nosplitbelow
@@ -832,14 +710,13 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 10 - ((9 * winheight(0) + 16) / 32)
+let s:l = 10 - ((7 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 10
 normal! 016l
-2wincmd w
-tabnext 1
+tabnext 2
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif
