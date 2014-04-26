@@ -22,6 +22,7 @@ package com.finegamedesign.surface
         private var elapsed:Number;
         private var pearls:Array;
         private var pearlClips:Array;
+        private var pearlsCollected:int;
         private var previousTime:int;
         private var surfaceY:Number;
 
@@ -49,6 +50,7 @@ package com.finegamedesign.surface
             previousTime = -1;
             now = -1;
             elapsed = 0;
+            pearlsCollected = 0;
             air = 1.0;
             pearls = [];
             this.pearlClips = pearlClips;
@@ -133,13 +135,18 @@ package com.finegamedesign.surface
             }
             var inhale:Number = 0.0005;
             var exhale:Number = 0.00001;
-            if (diver.y < surfaceY + diverWidth) {
+            if (atSurface()) {
                 air += inhale * elapsed;
             }
             else {
                 air -= exhale * elapsed;
             }
             air = Math.max(0.0, Math.min(1.0, air));
+        }
+
+        private function atSurface():Boolean
+        {
+            return diver.y < surfaceY + diverWidth;
         }
 
         private function collect():void
@@ -152,6 +159,7 @@ package com.finegamedesign.surface
                     pearl.y = Number.MIN_VALUE;
                     pearlClips[i].gotoAndPlay("collect");
                     score += 100;
+                    pearlsCollected++;
                 }
             }
         }
@@ -162,6 +170,11 @@ package com.finegamedesign.surface
         private function win():int
         {
             var winning:int = 0 < air ? 0 : -1;
+            if (0 <= winning) {
+                if (1 <= pearlsCollected && atSurface()) {
+                    winning = 1;
+                }
+            }
             return winning;
         }
     }
