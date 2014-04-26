@@ -14,6 +14,7 @@ TODO
 	level 5
 	Animate swim.
 	Animate pearl.
+	Animate click target point or direction.
 	Hear swim stroke.
 	Hear surface splash.
 	Hear pearl collection.

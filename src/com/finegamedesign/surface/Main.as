@@ -37,12 +37,10 @@ package com.finegamedesign.surface
         public var score_txt:TextField;
         public var restartTrial_btn:SimpleButton;
 
-        private var elapsed:Number;
         private var inTrial:Boolean;
         private var level:int;
         private var maxLevel:int;
         private var model:Model;
-        private var previousTime:int;
         private var view:View;
 
         public function Main()
@@ -59,9 +57,6 @@ package com.finegamedesign.surface
         {
             inTrial = false;
             level = 1;
-            maxLevel = Model.levels.length;
-            previousTime = getTimer();
-            elapsed = 0;
             model = new Model();
             model.onContagion = contagion.play;
             model.onDie = correct.play;
@@ -92,9 +87,7 @@ package com.finegamedesign.surface
         {
             inTrial = true;
             mouseChildren = true;
-            model.kill = 0;
-            model.maxKill = 0;
-            model.populate(Model.levels[level - 1]);
+            model.populate(level, DiverClip.instance.x, DiverClip.instance.y);
             view.populate(model, this);
         }
 
@@ -110,8 +103,6 @@ package com.finegamedesign.surface
         private function update(event:Event):void
         {
             var now:int = getTimer();
-            elapsed = (now - previousTime) * 0.001;
-            previousTime = now;
             // After stage is setup, connect to Kongregate.
             // http://flixel.org/forums/index.php?topic=293.0
             // http://www.photonstorm.com/tags/kongregate
@@ -120,7 +111,7 @@ package com.finegamedesign.surface
                 FlxKongregate.init(FlxKongregate.connect);
             }
             if (inTrial) {
-                var win:int = model.update();
+                var win:int = model.update(now);
                 view.update();
                 result(win);
             }
@@ -150,8 +141,8 @@ package com.finegamedesign.surface
         {
             inTrial = false;
             level++;
-            if (Model.levels.length < level) {
-                level = 0;
+            if (maxLevel < level) {
+                // level = 0;
                 feedback.gotoAndPlay("complete");
                 complete.play();
             }

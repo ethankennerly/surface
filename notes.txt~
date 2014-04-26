@@ -1,6 +1,6 @@
 TODO
-	Wireframe.
 	Click.  swim that way.
+	Wireframe.
 	Click.  see air gauge decrement.
 	Air gauge empty, float up, fade to black.
 	Underwater.  air gauge decrease.  At surface, air gauge increase.
@@ -14,6 +14,7 @@ TODO
 	level 5
 	Animate swim.
 	Animate pearl.
+	Animate click target point.
 	Hear swim stroke.
 	Hear surface splash.
 	Hear pearl collection.

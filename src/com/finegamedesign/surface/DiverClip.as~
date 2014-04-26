@@ -2,7 +2,13 @@ package com.finegamedesign.surface
 {
     import flash.display.MovieClip;
 
-    public final class DiverClip extends MovieClip
+    public class DiverClip extends MovieClip
     {
+        internal var instance:DiverClip;
+
+        public function DiverClip() 
+        {
+            instance = this;
+        }
     }
 }

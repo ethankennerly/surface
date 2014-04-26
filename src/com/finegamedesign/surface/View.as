@@ -19,13 +19,17 @@ package com.finegamedesign.surface
         internal function populate(model:Model, room:DisplayObjectContainer):void
         {
             this.model = model;
-            room.addEventListener(MouseEvent.MOUSE_DOWN, mouseDown, false, 0, true);
-            room.addEventListener(MouseEvent.MOUSE_UP, mouseUp, false, 0, true);
+            room.stage.addEventListener(MouseEvent.MOUSE_DOWN, mouseDown, false, 0, true);
+            room.stage.addEventListener(MouseEvent.MOUSE_UP, mouseUp, false, 0, true);
         }
 
         private function mouseDown(event:MouseEvent):void
         {
             mouseJustPressed = !isMouseDown;
+            if (mouseJustPressed) {
+                model.strokeToward(event.currentTarget.mouseX,
+                    event.currentTarget.mouseY);
+            }
             isMouseDown = true;
         }
 
@@ -37,6 +41,8 @@ package com.finegamedesign.surface
 
         internal function update():void
         {
+            DiverClip.instance.x = model.diver.x;
+            DiverClip.instance.y = model.diver.y;
         }
 
         internal function clear():void
