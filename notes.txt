@@ -1,5 +1,27 @@
 TODO
-	
+	Wireframe.
+	See swim.
+	Pearl.  100 points.
+	Get all pearls.  fade to white.
+	3 Pearls.  100, 200, 400 points.
+	Help.
+	Click.  move that way.
+	Click.  see air gauge decrement.
+	Air gauge empty, float up, fade to black.
+	Underwater.  air gauge decrease.  At surface, air gauge increase.
+	Animate swim.
+	Animate pearl.
+	Air pocket.
+	Coral reef.  Collide. stop.
+	Shark moving back and forth periodically.  Collide.  float up, fade to black.
+	Air bubble rising from vent periodically.
+	Fish swimming to calibrate speed of shark.
+	Big oyster clamping shut.  Collide.  fade to black.
+	Catch a fish.  score as a pearl.
+	Octopus.  Up and down.
+	Jellyfish.
+	Reverse flappy bird:  float up if do nothing.
+
 
 Wed 04/23/2014 
 22:05
@@ -77,7 +99,11 @@ participants at the Museum of Art and Digital Entertainment
 	Andre:  veteran, USC writing.
 	Cary:  from seattle.
 
-Popular culture:
+Reference culture:
+	In order to find enough pearl oysters, free-divers were often forced to descend to depths of over 100 feet on a single breath, exposing them to the dangers of hostile creatures, waves, eye damage, and drowning, often as a result of shallow water blackout on resurfacing.
+	http://en.wikipedia.org/wiki/Pearl_hunting
+	Underwater diving was practised in ancient cultures to reclaim sunken valuables, and to help aid military campaigns.
+	http://en.wikipedia.org/wiki/Free-diving
 	scratch beneath the surface
 	› to look further than what is obvious:
 	If you scratch beneath the surface you'll find she's really a very nice person.
@@ -98,13 +124,30 @@ Puzzles:
 	numbers under line to divide
 	mass below the surface
 
-References
+Reference games
 	Scuba, explore, air supply, http://www.funny-games.biz/scuba.html
-	Pearl Diver, fraction, http://www.brainpop.com/games/pearldiver/
+	Treasure Diver http://www.freegamearchive.com/online-games/flash/arcades/treasure-diver/4689
+	Pearl Diver, fraction, http://www.brainpop.com/games/pearldiver/   https://itunes.apple.com/us/app/pearl-diver-hd/id364617763?mt=8
 	Pearl Diver, spam, http://www.funatico.com/flash-games/pearl-diver-1327.html#.U1sUu_ljDHI
 	http://kids.discovery.com/games/apps/discovery-kids-scuba-adventures
+	Pearl Hunter http://www.youtube.com/watch?v=6SJ51QwcXT8
+	Pearl Hunter (minesweeper) http://www.youtube.com/watch?v=pBj_w0kuGU8
 	Bubble Sub
+	Diver 2 http://www.farseergames.com/divergame2/
+	Stunt Dive http://www.miniclip.com/games/stunt-dive/en/
+	High Dive Hero http://www.mostfungames.com/high-dive-hero.htm
+	Pearl Hunt http://www.dailyfreegames.com/flash/action-games/pearl-hunt.html
+	Pearl Hunter match-3 http://www.playbookdaily.com/pearl-hunter-puzzle-game-for-blackberry-playbook/
+	Pearl Collector match-3 http://salamanderarcade.com/game/pearl-collector
+	Deep Pearl puzzle bobble regrows http://www.myhappygames.com/game/16876/Deep-Pearl.html
+	Pearl Picker http://www.windowsphone.com/en-us/store/app/pearl-picker/a07d1e9c-c3b4-47b6-a7eb-1bd83ad50e8a
 
+
+
+Reference art
+	Pearl in oyster http://www.clipartof.com/interior_wall_decor/details/Coloring-Page-Outline-Of-A-Pearl-In-An-Oyster-Poster-Art-Print-231372
+	LITTLE PEARL HUNTER http://www.redbubble.com/people/robinanne/works/7861170-little-pearl-hunter
+	air bubble, fish, reef http://depositphotos.com/22565605/stock-illustration-Coloring-book-coral-reef-theme-1.html
 
 https://github.com/ethankennerly/surface.git
 
@@ -134,7 +177,186 @@ see air pockets drifting upward.
 
 maximize the amount of points for the pearls.
 
+rocks to navigate around.
+arrow keys to move.
+click and hold to move in that direction.
+click each location in order go to that waypoint. or ray to collision.
+pathfind around obstacles.
+
+dive into the water to go deeper quicker.
+
+each click is a stroke that propels.
+
+pearls are in oysters.
+
+see shells close.  only some have pearls.
+
+Read levels from text diagram.
+
+See a map.  Then go into explore mode.
+
+Random pearls from inside shells.
+
+Gather in one dive.
+
+Score bonus for every pearl collected without coming up for air.
+
+Constant air supply
+
+Air bubble refills air.
+So get to air bubble when nearly out.
+
+Run out of air, float back to surface.
+
+Each click reduces.
+
+Air gauge has bubbles.  each stroke depletes a bubble.
+
+Score by time.  So better to complete faster.
+
+Start clock on first swim.
 
 
+Next dive.
+
+Difficulty:  shortest path to collect all.
+May need to leave some behind.
 
 
+Flixel or Flash Professional
+
+Flixel:
+	+ tiles
+	+ collision
+Flash Professional:
+	+ UI
+
+
+Map
+
+..p.........
+............
+..........1.
+............
+...1....1...
+.1..1.......
+
+p:  player
+1:  pearl
+o:  air bubble
+x:  wall
+
+..p.........
+............
+..........1.
+............
+...1....1...
+.1..1.......
+
+
+..p.........
+......xxx...
+......xox.1.
+............
+...1....1...
+.1..1.......
+
+SCREENPLAY
+
+PEARL DIVING
+
+ISAAC sits in front of laptop.
+
+		ADDRESS BAR
+	http://finegamedesign.com/pearldiving
+
+		PEARL DIVING
+	Plan to gather pearls before you run out of air.
+
+	Click to swim that way.
+
+Top left.
+
+		CYAN METER
+	AIR
+
+Bubbles on it.
+
+DIVER is floating at surface.  
+
+One PEARL in open oyster appears at bottom of screen.
+
+Isaac clicks on right screen.
+
+Diver strokes toward the right.  Propels and gradually slows down.
+
+Isaac clicks toward pearl.
+
+Diver strokes and propels, gradually slows down.  Cyan meter decreases at constant rate.
+
+Isaac clicks pearl.
+
+Diver strokes.
+
+Diver intersects pearl.  Sparkle.  Hear bling.  White number floats up from oyster.  Oyster shell closes.  
+
+		WHITE TEXT
+	+100
+
+		SUBTEXT
+	Click to return to surface.
+
+Isaac clicks upward.  Again.
+
+Diver gets to surface.
+
+Fade to white.
+
+Diver at surface.
+
+Three pearls below.
+
+		SUBTEXT
+	For high score, collect all pearls in same dive.
+
+Click, click, click.  
+
+	+100
+
+	+200
+
+	+300
+
+Click, click, click.  Surface.
+
+Fade to white.
+
+		SUBTEXT
+	Each click costs one AIR bubble.  Plan fewest clicks to get all pearls.
+
+Click, click, click, click, click, click.
+
+AIR gauge low.  turns red and pulses.  Word "AIR" pulses.
+
+Diver pulses red.  
+
+Edges of screen pulse red.
+
+Diver floats up.  
+
+Fade to black.
+
+Diver at surface.
+
+Cyan air bubble.
+
+		SUBTEXT
+	Avoid rocks.
+
+		SUBTEXT
+	Get to AIR BUBBLE to refill air.
+
+Shark cycles left and right.
+
+		SUBTEXT
+	Avoid shark.
