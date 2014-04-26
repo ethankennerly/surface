@@ -1,0 +1,140 @@
+TODO
+	
+
+Wed 04/23/2014 
+22:05
+
+Final round:
+
+-1	Beneath the Surface:  Mario swimming.  
+-1	Break the Rules:  Edit physics.  Edit rules of ignition.
++1	Contrast:  Discriminate brightness, color.
+-1	Control More Than One:  Multitasking.  Dodge two-handed.  Lava Maze.
+-1	Death is Useful:  Underworld.
+-1	Deep Space:  Asteroids.
++1	Everything Breaks:  Bridge Builder.
+-1	Everything is Connected:  Spider Web.  
+-1	Generations:  Rogue Legacy.
+-1	Glitch:  Dodge the lines of glitch.
+-1	Isolation:  Binary seach.  Bisect.  
+-1	It's NOT supposed to do THAT!:  Boss battle with a roomba.
+-1	It Never Ends:  Cannabalt.
+-1	Night and Day:  Werewolf.  Vampire.
+-1	Ruins:  Castle Vania.  
+-1	Time Does Not Exist:  Twilight Zone.  Empty.
+-1	Two Worlds:  Reflection.  Paper Mario.
+-1	We Must Go Deeper:  Eat Eat Hooray.
++1	You Are The World:  Recycle Sort.  Environmental RTS.  Civilization:  Quality of Life.
+-1	You Are Your Own Enemy:  Street Fighter.  Kareteka.
+
+Fri 04/25/2014 
+18:01
+
+Beneath the Surface
+
+ideas around the room:
+	Ridiculous Fishing
+	Pearl diving
+	Free diving
+	Motherload
+	EatEatHooray
+	Mr Driller
+	legend of kage:  knife monsters
+	photograph fish
+	Flow Free: Double Sided.  Circuit Board.
+	Platformer, rising water.
+	Gold Digger, plan your route.
+	MineCraft
+	Perilous monster
+	Submarines
+	Mercury Drops
+	Eat bigger fish.
+	DigDug
+	Dwarf Fortress, only one plane visible
+	Mario Swimming
+	MineSweeper (metal detector)
+	Microsoft Surface
+	Core to the Earth
+	Journey to the Center of the Earth
+	CowEater
+	Spelunker
+	Sewer
+	Ninja Turtles
+	TV World
+	Floating rafts, Ephemera
+
+participants at the Museum of Art and Digital Entertainment
+	Jethro:  Organizer
+	Issa:  Sound, art?
+	Isaac:  WB Games
+	Tyriq:  Artist, gameMaker.  Catacomb King KickStarter.
+	Stevie:  Music for Catacomb King.
+	John (JJ):  DeVry programmer.
+	Angelo:  Founder of physical therapy.  EKG as input device, accelerometer.  instructor with people for disabilities.
+	John:  Startup in Austin.
+	Peter:  Game server.  ratesfear.com
+	Jeremy:  from Australia, biotech, software developer.
+	Andre:  veteran, USC writing.
+	Cary:  from seattle.
+
+Popular culture:
+	scratch beneath the surface
+	› to look further than what is obvious:
+	If you scratch beneath the surface you'll find she's really a very nice person.
+	http://dictionary.cambridge.org/us/dictionary/british/scratch-beneath-the-surface
+
+	Scratch underneath thAnnotatee surface, where does your purpose lie?
+	It seems our will is worthless, like we're pawns beneath the sky
+	http://rapgenius.com/Gza-beneath-the-surface-lyrics#note-818606
+
+	http://english.stackexchange.com/questions/10671/what-does-scratch-below-the-surface-mean
+
+Puzzles:
+	Flow Free: Double Sided.  Circuit Board.
+	Mr Driller
+	MineSweeper
+	Hidden Object
+	Scratch an image to reveal true identity
+	numbers under line to divide
+	mass below the surface
+
+References
+	Scuba, explore, air supply, http://www.funny-games.biz/scuba.html
+	Pearl Diver, fraction, http://www.brainpop.com/games/pearldiver/
+	Pearl Diver, spam, http://www.funatico.com/flash-games/pearl-diver-1327.html#.U1sUu_ljDHI
+	http://kids.discovery.com/games/apps/discovery-kids-scuba-adventures
+	Bubble Sub
+
+
+https://github.com/ethankennerly/surface.git
+
+gold digger
+
+plan route to find most gold
+
+pearl diver
+
+collect air bubbles
+air bubble in pocket of a cave corner.
+
+plan route to get the most pearls in the dive with limited air.
+trivial to collect pearls.  traveling salesman to get all.
+pick up keys that open doors.
+not sure where a cave will progress to.
+large world to explore.
+
+use arrow keys to move.
+
+explore.
+
+see all pearls beforehand.
+see sharks moving back and forth.
+exterminator tried this, but it was really hard to estimate distance in different axes.
+see air pockets drifting upward.
+
+maximize the amount of points for the pearls.
+
+
+
+
+
