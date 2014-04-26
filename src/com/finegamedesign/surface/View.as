@@ -42,9 +42,13 @@ package com.finegamedesign.surface
 
         internal function update():void
         {
-            DiverClip.instance.x = model.diver.x;
-            DiverClip.instance.y = model.diver.y;
-            gotoFraction(model.air, main.air);
+            if (DiverClip.instance) {
+                DiverClip.instance.x = model.diver.x;
+                DiverClip.instance.y = model.diver.y;
+            }
+            if (model && main) {
+                gotoFraction(model.air, main.air);
+            }
         }
 
         private function gotoFraction(fraction:Number, mc:MovieClip):void

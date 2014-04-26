@@ -58,12 +58,14 @@ package com.finegamedesign.surface
         {
             inTrial = false;
             level = 1;
+            LevelSelect.onSelect = load;
+            LevelLoader.onLoaded = trial;
             model = new Model();
             model.onContagion = contagion.play;
             model.onDie = correct.play;
             model.onDeselect = wrong.play;
             view = new View();
-            trial(level);
+            // trial();
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
             // level_txt.addEventListener(MouseEvent.CLICK, cheatLevel, false, 0, true);
             restartTrial_btn.addEventListener(MouseEvent.CLICK, restartTrial, false, 0, true);
@@ -81,10 +83,18 @@ package com.finegamedesign.surface
         private function restartTrial(e:MouseEvent):void
         {
             view.clear();
-            lose();
+            next();
+            // lose();
         }
 
-        public function trial(level:int):void
+        public function load(level:int):void
+        {
+            this.level = level;
+            LevelLoader.load(level);
+            gotoAndPlay("level");
+        }
+
+        public function trial():void
         {
             inTrial = true;
             mouseChildren = true;
@@ -118,7 +128,7 @@ package com.finegamedesign.surface
                 result(win);
             }
             else {
-                view.update();
+                // view.update();
                 if ("next" == feedback.currentLabel) {
                     next();
                 }
@@ -177,21 +187,13 @@ package com.finegamedesign.surface
         {
             feedback.gotoAndPlay("none");
             mouseChildren = true;
-            if (currentFrame < totalFrames) {
-                nextFrame();
-            }
-            if (level <= 0) {
-                restart();
-            }
-            else {
-                trial(level);
-            }
+            restart();
         }
 
         public function restart():void
         {
-            level = 1;
-            trial(level);
+            // level = 1;
+            // trial();
             mouseChildren = true;
             gotoAndPlay(1);
         }

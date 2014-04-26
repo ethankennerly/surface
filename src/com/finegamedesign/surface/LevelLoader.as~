@@ -1,0 +1,37 @@
+package com.finegamedesign.surface
+{
+    import flash.display.DisplayObjectContainer;
+    import flash.display.Sprite;
+
+    public class LevelLoader extends Sprite
+    {
+        internal static var levels:Array = [
+            LevelPearl,
+            LevelPearls
+        ];
+
+        internal static var onLoaded:Function;
+
+        internal static var instance:DisplayObjectContainer;
+
+        internal static function load(level:int):DisplayObjectContainer
+        {
+            var levelClass:Class = levels[level];
+            instance = new levelClass();
+            return instance;
+        }
+
+        /**
+         * Add to list of pearls.
+         */
+        public function LevelLoader() 
+        {
+            super();
+            for (var c:int = numChildren - 1; 0 <= c; c--) {
+                removeChildAt(c);
+            }
+            addChild(instance);
+            onLoaded();
+        }
+    }
+}
