@@ -16,10 +16,12 @@ package com.finegamedesign.surface
         internal var gravityVector:Number;
         internal var target:Point;
         internal var vector:Point;
-        private var diverWidth:Number = 20;
+        private var diverWidth:Number = 32;
         private var min:Number = 0.0001;
         private var now:int;
         private var elapsed:Number;
+        private var pearls:Array;
+        private var pearlClips:Array;
         private var previousTime:int;
         private var surfaceY:Number;
 
@@ -32,9 +34,11 @@ package com.finegamedesign.surface
             diver = new Point();
             target = new Point();
             vector = new Point();
+            pearls = [];
         }
 
-        internal function populate(level:int, diverX:Number, diverY:Number, surfaceY:Number):void
+        internal function populate(level:int, diverX:Number, diverY:Number, surfaceY:Number,
+                pearlClips:Array):void
         {
             if (null == levelScores[level]) {
                 levelScores[level] = 0;
@@ -46,6 +50,11 @@ package com.finegamedesign.surface
             now = -1;
             elapsed = 0;
             air = 1.0;
+            pearls = [];
+            this.pearlClips = pearlClips;
+            for (var i:int = 0; i < pearlClips.length; i++) {
+                pearls.push(new Point(pearlClips[i].x, pearlClips[i].y));
+            }
         }
 
         internal function strokeToward(x:Number, y:Number):void
@@ -75,6 +84,7 @@ package com.finegamedesign.surface
             move();
             sink();
             breathe();
+            collect();
             return win();
         }
 
@@ -113,7 +123,7 @@ package com.finegamedesign.surface
             diver.y += gravityVector * elapsed;
         }
 
-        internal function breathe():void
+        private function breathe():void
         {
             var exert:Number = 0.0005;
             var fast:Number = 0.08;
@@ -130,6 +140,20 @@ package com.finegamedesign.surface
                 air -= exhale * elapsed;
             }
             air = Math.max(0.0, Math.min(1.0, air));
+        }
+
+        private function collect():void
+        {
+            for (var i:int = pearls.length - 1; 0 <= i; i--) {
+                var pearl:Point = pearls[i];
+                var distance:Number = Point.distance(diver, pearl);
+                if (distance < diverWidth) {
+                    pearl.x = Number.MIN_VALUE;
+                    pearl.y = Number.MIN_VALUE;
+                    pearlClips[i].gotoAndPlay("collect");
+                    score += 100;
+                }
+            }
         }
 
         /**

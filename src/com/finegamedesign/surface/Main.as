@@ -88,7 +88,8 @@ package com.finegamedesign.surface
         {
             inTrial = true;
             mouseChildren = true;
-            model.populate(level, DiverClip.instance.x, DiverClip.instance.y, DiverClip.instance.y);
+            model.populate(level, DiverClip.instance.x, DiverClip.instance.y, DiverClip.instance.y,
+                PearlClip.instances);
             view.populate(model, this);
         }
 
@@ -140,6 +141,7 @@ package com.finegamedesign.surface
 
         private function win():void
         {
+            reset();
             inTrial = false;
             level++;
             if (maxLevel < level) {
@@ -155,8 +157,14 @@ package com.finegamedesign.surface
             // API.postScore("Score", model.score);
         }
 
+        private function reset():void
+        {
+            PearlClip.instances = [];
+        }
+
         private function lose():void
         {
+            reset();
             inTrial = false;
             FlxKongregate.api.stats.submit("Score", model.score);
             // API.postScore("Score", model.score);
