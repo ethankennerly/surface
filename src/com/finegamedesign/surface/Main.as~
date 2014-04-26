@@ -87,7 +87,7 @@ package com.finegamedesign.surface
         {
             inTrial = true;
             mouseChildren = true;
-            model.populate(level, DiverClip.instance.x, DiverClip.instance.y);
+            model.populate(level, DiverClip.instance.x, DiverClip.instance.y, DiverClip.instance.y);
             view.populate(model, this);
         }
 
@@ -141,7 +141,7 @@ package com.finegamedesign.surface
         {
             inTrial = false;
             level++;
-            if (Model.levels.length < level) {
+            if (maxLevel < level) {
                 // level = 0;
                 feedback.gotoAndPlay("complete");
                 complete.play();

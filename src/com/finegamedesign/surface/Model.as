@@ -4,6 +4,7 @@ package com.finegamedesign.surface
 
     public class Model
     {
+        internal var air:Number;
         internal var onContagion:Function;
         internal var onDeselect:Function;
         internal var onDie:Function;
@@ -12,14 +13,19 @@ package com.finegamedesign.surface
         internal var level:int;
         internal var levelScores:Array;
         internal var diver:Point;
+        internal var gravityVector:Number;
         internal var target:Point;
         internal var vector:Point;
+        private var diverWidth:Number = 20;
+        private var min:Number = 0.0001;
         private var now:int;
         private var elapsed:Number;
         private var previousTime:int;
+        private var surfaceY:Number;
 
         public function Model()
         {
+            air = 1.0;
             score = 0;
             highScore = 0;
             levelScores = [];
@@ -28,16 +34,18 @@ package com.finegamedesign.surface
             vector = new Point();
         }
 
-        internal function populate(level:int, diverX:Number, diverY:Number):void
+        internal function populate(level:int, diverX:Number, diverY:Number, surfaceY:Number):void
         {
             if (null == levelScores[level]) {
                 levelScores[level] = 0;
             }
             diver.x = diverX;
             diver.y = diverY;
+            this.surfaceY = surfaceY;
             previousTime = -1;
             now = -1;
             elapsed = 0;
+            air = 1.0;
         }
 
         internal function strokeToward(x:Number, y:Number):void
@@ -46,8 +54,8 @@ package com.finegamedesign.surface
             target.y = y;
             var distance:Number = Point.distance(target, diver);
             var deadZone:Number = 32.0;
-            var speed:Number = 0.1;
             if (deadZone <= distance) {
+                var speed:Number = 0.1;
                 vector.x = speed * (target.x - diver.x) / distance;
                 vector.y = speed * (target.y - diver.y) / distance;
                 target.x = vector.x;
@@ -65,10 +73,12 @@ package com.finegamedesign.surface
             this.now = now;
             elapsed = this.now - previousTime;
             move();
+            sink();
+            breathe();
             return win();
         }
 
-        internal function move():void
+        private function move():void
         {
             diver.x += vector.x * elapsed;
             diver.y += vector.y * elapsed;
@@ -77,7 +87,6 @@ package com.finegamedesign.surface
                 vector.x *= base / elapsed;
                 vector.y *= base / elapsed;
             }
-            var min:Number = 0.0001;
             if (Math.abs(vector.x) < min) {
                 vector.x = 0;
             }
@@ -87,11 +96,48 @@ package com.finegamedesign.surface
         }
 
         /**
+         * If above surface, pull down.
+         */
+        private function sink():void
+        {
+            var gravity:Number = 0.0001;
+            if (diver.y < surfaceY) {
+                gravityVector += gravity * elapsed;
+            }
+            else if (surfaceY < diver.y && min < gravityVector) {
+                gravityVector -= gravity * elapsed;
+            }
+            else {
+                gravityVector = 0;
+            }
+            diver.y += gravityVector * elapsed;
+        }
+
+        internal function breathe():void
+        {
+            var exert:Number = 0.0005;
+            var fast:Number = 0.08;
+            var still:Point = new Point();
+            if (fast <= Point.distance(vector, still)) {
+                air -= exert * elapsed;
+            }
+            var inhale:Number = 0.0005;
+            var exhale:Number = 0.00001;
+            if (diver.y < surfaceY + diverWidth) {
+                air += inhale * elapsed;
+            }
+            else {
+                air -= exhale * elapsed;
+            }
+            air = Math.max(0.0, Math.min(1.0, air));
+        }
+
+        /**
          * @return  0 continue, 1: win, -1: lose.
          */
         private function win():int
         {
-            var winning:int = 0;
+            var winning:int = 0 < air ? 0 : -1;
             return winning;
         }
     }

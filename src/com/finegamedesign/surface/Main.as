@@ -29,6 +29,7 @@ package com.finegamedesign.surface
         private static var dieClass:Class;
         private var die:Sound = new dieClass();
 
+        public var air:MovieClip;
         public var feedback:MovieClip;
         public var highScore_txt:TextField;
         public var level_txt:TextField;
@@ -87,7 +88,7 @@ package com.finegamedesign.surface
         {
             inTrial = true;
             mouseChildren = true;
-            model.populate(level, DiverClip.instance.x, DiverClip.instance.y);
+            model.populate(level, DiverClip.instance.x, DiverClip.instance.y, DiverClip.instance.y);
             view.populate(model, this);
         }
 
