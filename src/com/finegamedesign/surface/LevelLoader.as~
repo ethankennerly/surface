@@ -9,7 +9,10 @@ package com.finegamedesign.surface
             LevelPearl,
             LevelPearls,
             LevelPearls2,
-            LevelPearlsChooseBest
+            LevelPearlsChooseBest,
+            LevelReef,
+            LevelReefPassage,
+            LevelReefDifficult
         ];
 
         internal static var onLoaded:Function;
@@ -33,6 +36,8 @@ package com.finegamedesign.surface
                 removeChildAt(c);
             }
             addChild(instance);
+            this.mouseEnabled = false;
+            this.mouseChildren = false;
             onLoaded();
         }
     }

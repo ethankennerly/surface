@@ -38,12 +38,15 @@ package com.finegamedesign.surface
             score = 0;
             highScore = 0;
             levelScores = [];
+            pearls = [];
             diver = new Point();
             target = new Point();
             vector = new Point();
-            pearls = [];
         }
 
+        /**
+         * 14/4/26 Load level.  Tyriq expects to fix swimmer does not move.
+         */
         internal function populate(level:int, diverX:Number, diverY:Number, surfaceY:Number,
                 pearlClips:Array, bounds:Rectangle):void
         {
@@ -52,6 +55,10 @@ package com.finegamedesign.surface
             }
             diver.x = diverX;
             diver.y = diverY;
+            target.x = -1;
+            target.y = -1;
+            vector.x = 0;
+            vector.y = 0;
             this.surfaceY = surfaceY;
             previousTime = -1;
             now = -1;

@@ -38,12 +38,15 @@ package com.finegamedesign.surface
             score = 0;
             highScore = 0;
             levelScores = [];
+            pearls = [];
             diver = new Point();
             target = new Point();
             vector = new Point();
-            pearls = [];
         }
 
+        /**
+         * 14/4/26 Load level.  Tyriq expects to fix.
+         */
         internal function populate(level:int, diverX:Number, diverY:Number, surfaceY:Number,
                 pearlClips:Array, bounds:Rectangle):void
         {
@@ -52,6 +55,10 @@ package com.finegamedesign.surface
             }
             diver.x = diverX;
             diver.y = diverY;
+            target.x = -1;
+            target.y = -1;
+            vector.x = 0;
+            vector.y = 0;
             this.surfaceY = surfaceY;
             previousTime = -1;
             now = -1;
@@ -125,19 +132,20 @@ package com.finegamedesign.surface
             return play;
         }
 
+        private var blockWidth:Number = diverWidth / 3;
+
         private function bound():void
         {
-            var blockWidth:Number = diverWidth / 2;
-            if (diver.x - diverWidth < bounds.left) {
+            if (diver.x - blockWidth < bounds.left) {
                 vector.x = Math.max(0.0, vector.x);
             }
-            else if (bounds.right < diver.x + diverWidth) {
+            else if (bounds.right < diver.x + blockWidth) {
                 vector.x = Math.min(0.0, vector.x);
             }
-            if (diver.y - diverWidth < bounds.top) {
+            if (diver.y - blockWidth < bounds.top) {
                 vector.y = Math.max(0.0, vector.y);
             }
-            else if (bounds.bottom < diver.y + diverWidth) {
+            else if (bounds.bottom < diver.y + blockWidth) {
                 vector.y = Math.min(0.0, vector.y);
             }
         }
@@ -151,6 +159,18 @@ package com.finegamedesign.surface
                 }
                 else {
                     collision.alpha = 1.0;
+                }
+                if (collision.hitTestPoint(diver.x - blockWidth, diver.y, true)) {
+                    vector.x = Math.max(0.0, vector.x);
+                }
+                else if (collision.hitTestPoint(diver.x + blockWidth, diver.y, true)) {
+                    vector.x = Math.min(0.0, vector.x);
+                }
+                if (collision.hitTestPoint(diver.x, diver.y - blockWidth, true)) {
+                    vector.y = Math.max(0.0, vector.y);
+                }
+                else if (collision.hitTestPoint(diver.x, diver.y + blockWidth, true)) {
+                    vector.y = Math.min(0.0, vector.y);
                 }
             }
         }
@@ -211,7 +231,7 @@ package com.finegamedesign.surface
 
         private function atSurface():Boolean
         {
-            return diver.y < surfaceY + (diverWidth / 3);
+            return diver.y < surfaceY + blockWidth;
         }
 
         private function collect():void
