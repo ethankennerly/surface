@@ -11,6 +11,8 @@ package com.finegamedesign.surface
             LevelPearls2,
             LevelPearlsChooseBest,
             LevelReef,
+            LevelReefModerate,
+            LevelAir,
             LevelReefPassage,
             LevelReefDifficult
         ];

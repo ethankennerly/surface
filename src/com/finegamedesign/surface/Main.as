@@ -23,10 +23,10 @@ package com.finegamedesign.surface
         [Embed(source="../../../../sfx/die.mp3")]
         private static var wrongClass:Class;
         private var wrong:Sound = new wrongClass();
-        [Embed(source="../../../../sfx/correct.mp3")]
+        [Embed(source="../../../../sfx/getPearl2.mp3")]
         private static var contagionClass:Class;
         private var contagion:Sound = new contagionClass();
-        [Embed(source="../../../../sfx/correct.mp3")]
+        [Embed(source="../../../../sfx/getPearl2.mp3")]
         private static var dieClass:Class;
         private var die:Sound = new dieClass();
         private var loop:Sound; // Loop = new Loop();
@@ -69,6 +69,7 @@ package com.finegamedesign.surface
             model.onDie = correct.play;
             model.onDeselect = wrong.play;
             view = new View();
+            updateHudText();
             // trial();
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
             // level_txt.addEventListener(MouseEvent.CLICK, cheatLevel, false, 0, true);
@@ -95,6 +96,7 @@ package com.finegamedesign.surface
         {
             this.level = level;
             LevelLoader.load(level);
+            contagion.play();
             gotoAndPlay("level");
             // loopChannel = loop.play(0, int.MAX_VALUE);
         }
@@ -175,6 +177,7 @@ package com.finegamedesign.surface
         private function reset():void
         {
             PearlClip.instances = [];
+            AirPocketClip.instances = [];
             if (null != loopChannel) {
                 loopChannel.stop();
             }

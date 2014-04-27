@@ -23,7 +23,9 @@ package com.finegamedesign.surface
         internal var target:Point;
         internal var rotation:Number;
         internal var vector:Point;
+        private var accumulator:int;
         private var bounds:Rectangle;
+        private var fatigue:Number;
         private var diverWidth:Number = 32;
         private var min:Number = 0.0001;
         private var now:int;
@@ -57,12 +59,14 @@ package com.finegamedesign.surface
                 levelScores[level] = 0;
             }
             levelScore = 0;
+            accumulator = 0;
             diver.x = diverX;
             diver.y = diverY;
             target.x = -1;
             target.y = -1;
             vector.x = 0;
             vector.y = 0;
+            fatigue = 0.0;
             this.surfaceY = surfaceY;
             previousTime = -1;
             now = -1;
@@ -91,6 +95,7 @@ package com.finegamedesign.surface
                 vector.y = speed * (target.y - diver.y) / distance;
                 diverLabel = "swim";
                 diverLabelDirty = true;
+                fatigue += 1.0 / 12;
                 rotation = headFirst();
             }
         }
@@ -158,12 +163,14 @@ package com.finegamedesign.surface
         {
             var collision:DisplayObject = LevelLoader.instance["collision"];
             if (null != collision) {
+                /*#
                 if (collision.hitTestPoint(diver.x, diver.y, true)) {
                     collision.alpha = 0.5;
                 }
                 else {
                     collision.alpha = 1.0;
                 }
+                #*/
                 if (collision.hitTestPoint(diver.x - blockWidth, diver.y, true)) {
                     vector.x = Math.max(0.0, vector.x);
                 }
@@ -183,10 +190,13 @@ package com.finegamedesign.surface
         {
             diver.x += vector.x * elapsed;
             diver.y += vector.y * elapsed;
+            accumulator += elapsed;
             var base:Number = 32.0;
-            if (0 < elapsed) {
+            var threshold:int = 33;
+            while (threshold < accumulator) {
                 vector.x *= base / elapsed;
                 vector.y *= base / elapsed;
+                accumulator -= threshold;
             }
             if (Math.abs(vector.x) < min) {
                 vector.x = 0;
@@ -217,20 +227,58 @@ package com.finegamedesign.surface
         private function breathe():void
         {
             var exert:Number = 0.0005;
+            /*-
             var fast:Number = 0.08;
             var still:Point = new Point();
             if (fast <= Point.distance(vector, still)) {
                 air -= exert * elapsed;
             }
+            -*/
+            if (0 < fatigue) {
+                var exerted:Number = Math.min(fatigue, exert * elapsed);
+                air -= exerted;
+                fatigue -= exerted;
+            }
             var inhale:Number = 0.0005;
-            var exhale:Number = 0.00001;
+            var exhale:Number = // 0.00001;
+                                0.00002;
             if (atSurface()) {
                 air += inhale * elapsed;
             }
             else {
                 air -= exhale * elapsed;
             }
+            air += breatheAirPocket(inhale * elapsed);
             air = Math.max(0.0, Math.min(1.0, air));
+        }
+
+        private function breatheAirPocket(mayAdd:Number):Number
+        {
+            for (var i:int = 0; i < AirPocketClip.instances.length; i++) {
+                var pocket:AirPocketClip = AirPocketClip.instances[i];
+                if (colliding(pocket)) {
+                    pocket.play();
+                    return mayAdd;
+                }
+            }
+            return 0.0;
+        }
+
+        private function colliding(collision:DisplayObject):Boolean
+        {
+            if (collision.hitTestPoint(diver.x - blockWidth, diver.y, true)) {
+                return true;
+            }
+            else if (collision.hitTestPoint(diver.x + blockWidth, diver.y, true)) {
+                return true;
+            }
+            if (collision.hitTestPoint(diver.x, diver.y - blockWidth, true)) {
+                return true;
+            }
+            else if (collision.hitTestPoint(diver.x, diver.y + blockWidth, true)) {
+                return true;
+            }
+            return false;
         }
 
         private function atSurface():Boolean
@@ -279,7 +327,7 @@ package com.finegamedesign.surface
             }
             var sum:int = 0;
             for each (var n:int in levelScores) {
-                sum += levelScores[i];
+                sum += n;
             }
             score = sum;
             return sum;

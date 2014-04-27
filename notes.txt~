@@ -1,17 +1,27 @@
 TODO
 	Tune exert exhale.
-	Read score.
-	Air pocket.
+	Air pocket.  Refills breath.  Depletes.
 	Shark moving back and forth periodically.  Collide.  float up, fade to black.
-	Animate wave at surface.
-	Air bubble rising from vent periodically.
-	Kelp.
+	Kelp.  Slow down.
 	Animate wave going away from body, to help plan route.
 	Animate air bubbles everytime you stroke.
 	Illustrate air supply with bulges to count stroke limit.
 	Hear swim stroke.
+	Tune level design.  more pearls at higher levels.
 	Hear surface splash.
 	Hear pearl collection.
+	Submit game jam to Ludum Dare.
+	Post-mortem.
+	Kongegrate.
+	Newgrounds.
+	Horizontal dolphin. collide, ride.
+	Kraken tentacle.  Collide.  Fade to black.
+	illustrate rocks
+	Emphasize diver hair, eyes, clothes, arms, legs.
+	Air bubble rising from vent periodically.
+	hear waves loop.
+	Vertical dolphin.
+	Treasure chest.  10 pearls.  Sink.
 	Fish swimming to calibrate speed of shark.
 	Big oyster clamping shut.  Collide.  fade to black.
 	Catch a fish.  score as a pearl.
@@ -19,6 +29,7 @@ TODO
 	Octopus.  Up and down.
 	Jellyfish.
 	Reverse flappy bird:  float up if do nothing.
+	Diver rises and falls with wave.
 	Animate pearl.
 
 

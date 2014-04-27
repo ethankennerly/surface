@@ -11,6 +11,7 @@ package com.finegamedesign.surface
             LevelPearls2,
             LevelPearlsChooseBest,
             LevelReef,
+            LevelReefModerate,
             LevelReefPassage,
             LevelReefDifficult
         ];
@@ -28,6 +29,7 @@ package com.finegamedesign.surface
 
         /**
          * Add to list of pearls.
+         * Disable selecting text.
          */
         public function LevelLoader() 
         {
