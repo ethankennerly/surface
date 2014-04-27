@@ -24,21 +24,26 @@ package com.finegamedesign.surface
             var columnCount:int = 3;
             var columnWidth:int = 100;
             for (var i:int = 0; i < LevelLoader.levels.length; i++) {
-                var btn:LevelTile = new LevelTile();
-                btn.x = columnWidth * ((i % columnCount) - 1);
-                btn.y = columnWidth * int(i / columnCount);
-                btn.txt.text = (i + 1).toString();
-                btn.txt.mouseEnabled = false;
-                btn.name = "_" + (i + 1).toString();
-                btn.addEventListener(MouseEvent.CLICK,
+                var tile:LevelTile = new LevelTile();
+                tile.x = columnWidth * ((i % columnCount) - 1);
+                tile.y = columnWidth * int(i / columnCount);
+                var level:int = i + 1;
+                tile.txt.text = level.toString();
+                var score:String = null == Model.levelScores[level] ? "" 
+                    : Model.levelScores[level].toString();
+                tile.score.text = score.toString();
+                tile.txt.mouseEnabled = false;
+                tile.score.mouseEnabled = false;
+                tile.name = "_" + level.toString();
+                tile.btn.addEventListener(MouseEvent.CLICK,
                     selectLevel, false, 0, true);
-                addChild(btn);
+                addChild(tile);
             }
         }
 
         private function selectLevel(event:MouseEvent):void
         {
-            var level:int = parseInt(event.currentTarget.name.split("_")[1]);
+            var level:int = parseInt(event.currentTarget.parent.name.split("_")[1]);
             onSelect(level);
         }
     }

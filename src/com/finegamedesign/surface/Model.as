@@ -6,6 +6,9 @@ package com.finegamedesign.surface
 
     public class Model
     {
+        internal static var levelScores:Array = [];
+        internal static var score:int = 0;
+
         internal var air:Number;
         internal var diverLabel:String;
         internal var diverLabelDirty:Boolean;
@@ -13,9 +16,8 @@ package com.finegamedesign.surface
         internal var onDeselect:Function;
         internal var onDie:Function;
         internal var highScore:int;
-        internal var score:int;
         internal var level:int;
-        internal var levelScores:Array;
+        internal var levelScore:int;
         internal var diver:Point;
         internal var gravityVector:Number;
         internal var target:Point;
@@ -50,9 +52,11 @@ package com.finegamedesign.surface
         internal function populate(level:int, diverX:Number, diverY:Number, surfaceY:Number,
                 pearlClips:Array, bounds:Rectangle):void
         {
+            this.level = level;
             if (null == levelScores[level]) {
                 levelScores[level] = 0;
             }
+            levelScore = 0;
             diver.x = diverX;
             diver.y = diverY;
             target.x = -1;
@@ -243,7 +247,7 @@ package com.finegamedesign.surface
                     pearl.x = Number.MIN_VALUE;
                     pearl.y = Number.MIN_VALUE;
                     pearlClips[i].gotoAndPlay("collect");
-                    score += 100;
+                    levelScore += 1;
                     pearlsCollected++;
                     // onContagion();  // why does diver jump?
                 }
@@ -262,9 +266,23 @@ package com.finegamedesign.surface
             else if (0 <= winning) {
                 if (1 <= pearlsCollected && atSurface()) {
                     winning = 1;
+                    updateScore();
                 }
             }
             return winning;
+        }
+
+        private function updateScore():int
+        {
+            if (levelScores[level] < levelScore) {
+                levelScores[level] = levelScore;
+            }
+            var sum:int = 0;
+            for each (var n:int in levelScores) {
+                sum += n;
+            }
+            score = sum;
+            return sum;
         }
     }
 }

@@ -111,10 +111,10 @@ package com.finegamedesign.surface
         private function updateHudText():void
         {
             // trace("updateHudText: ", score, highScore);
-            score_txt.text = model.score.toString();
-            highScore_txt.text = model.highScore.toString();
-            level_txt.text = level.toString();
-            maxLevel_txt.text = maxLevel.toString();
+            score_txt.text = Model.score.toString();
+            // highScore_txt.text = Model.highScore.toString();
+            // level_txt.text = level.toString();
+            // maxLevel_txt.text = maxLevel.toString();
         }
 
         private function update(event:Event):void
@@ -138,7 +138,7 @@ package com.finegamedesign.surface
                     next();
                 }
             }
-            // updateHudText();
+            updateHudText();
         }
 
         private function result(winning:int):void
@@ -168,7 +168,7 @@ package com.finegamedesign.surface
                 feedback.gotoAndPlay("correct");
                 correct.play();
             }
-            FlxKongregate.api.stats.submit("Score", model.score);
+            FlxKongregate.api.stats.submit("Score", Model.score);
             // API.postScore("Score", model.score);
         }
 
@@ -184,7 +184,7 @@ package com.finegamedesign.surface
         {
             reset();
             inTrial = false;
-            FlxKongregate.api.stats.submit("Score", model.score);
+            FlxKongregate.api.stats.submit("Score", Model.score);
             // API.postScore("Score", model.score);
             mouseChildren = false;
             feedback.gotoAndPlay("wrong");
