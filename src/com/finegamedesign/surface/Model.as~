@@ -98,6 +98,9 @@ package com.finegamedesign.surface
                 diverLabelDirty = true;
                 fatigue += 1.0 / 12;
                 rotation = headFirst();
+                if (!atSurface()) {
+                    View.exhaust();
+                }
             }
         }
 
@@ -191,7 +194,7 @@ package com.finegamedesign.surface
         private function tangle():void
         {
             if (tangled()) {
-                accumulator += 2.0 * elapsed;
+                accumulator += 3.0 * elapsed;
             }
         }
 

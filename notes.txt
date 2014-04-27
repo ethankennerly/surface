@@ -1,8 +1,8 @@
 TODO
-	Kelp.  Slow down.
-	Animate wave going away from body, to help plan route.
 	Animate air bubbles everytime you stroke.
+	About out of air.  Blink air.  
 	Illustrate air supply with bulges to count stroke limit.
+	Animate wave going away from body, to help plan route.
 	Hear swim stroke.
 	Tune level design.  more pearls at higher levels.  balance risk and reward.
 	Hear surface splash.
@@ -15,6 +15,7 @@ TODO
 	Horizontal dolphin. collide, ride.
 	Kraken tentacle.  Collide.  Fade to black.
 	illustrate rocks
+	About out of air.  Blink body.  
 	Emphasize diver hair, eyes, clothes, arms, legs.
 	Air bubble rising from vent periodically.
 	hear waves loop.

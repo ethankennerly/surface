@@ -75,6 +75,13 @@ package com.finegamedesign.surface
             }
         }
 
-        
+        internal static function exhaust():void
+        {
+            var clip:DiverClip = DiverClip.instance;
+            var exhaust:ExhaustClip = new ExhaustClip();
+            exhaust.x = clip.x;
+            exhaust.y = clip.y;
+            clip.parent.addChild(exhaust);
+        }
     }
 }

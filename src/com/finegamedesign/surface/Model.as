@@ -98,6 +98,9 @@ package com.finegamedesign.surface
                 diverLabelDirty = true;
                 fatigue += 1.0 / 12;
                 rotation = headFirst();
+                if (!atSurface()) {
+                    View.exhaust();
+                }
             }
         }
 
@@ -284,18 +287,19 @@ package com.finegamedesign.surface
             return 0.0;
         }
 
-        private function colliding(collision:DisplayObject):Boolean
+        private function colliding(collision:DisplayObject, widthMultiplier:Number=1.0):Boolean
         {
-            if (collision.hitTestPoint(diver.x - blockWidth, diver.y, true)) {
+            var width:Number = blockWidth * widthMultiplier;
+            if (collision.hitTestPoint(diver.x - width, diver.y, true)) {
                 return true;
             }
-            else if (collision.hitTestPoint(diver.x + blockWidth, diver.y, true)) {
+            else if (collision.hitTestPoint(diver.x + width, diver.y, true)) {
                 return true;
             }
-            if (collision.hitTestPoint(diver.x, diver.y - blockWidth, true)) {
+            if (collision.hitTestPoint(diver.x, diver.y - width, true)) {
                 return true;
             }
-            else if (collision.hitTestPoint(diver.x, diver.y + blockWidth, true)) {
+            else if (collision.hitTestPoint(diver.x, diver.y + width, true)) {
                 return true;
             }
             return false;
@@ -311,7 +315,7 @@ package com.finegamedesign.surface
             var sharks:Array = SharkClip.instances;
             for (var s:int = 0; s < sharks.length; s++) {
                 shark.move(sharks[s], bounds, elapsed);
-                if (colliding(sharks[s])) {
+                if (colliding(sharks[s], 0.5)) {
                     return true;
                 }
             }

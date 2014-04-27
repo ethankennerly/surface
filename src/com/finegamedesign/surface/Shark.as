@@ -6,7 +6,7 @@ package com.finegamedesign.surface
 
     public class Shark
     {
-        private var speed:Number = 0.05;
+        private var speed:Number = 0.025;
 
         /**
          * @param shark   Expects shark faces right.

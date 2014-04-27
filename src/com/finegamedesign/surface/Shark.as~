@@ -15,7 +15,7 @@ package com.finegamedesign.surface
         public function move(shark:DisplayObject, bounds:Rectangle,
                 elapsed:Number):void
         {
-            var body:Rectangle = shark.getBounds();
+            var body:Rectangle = shark.getBounds(shark.parent);
             if (body.right < bounds.left) {
                 shark.scaleX = 1.0;
             }
