@@ -15,6 +15,7 @@ package com.finegamedesign.surface
             LevelAir,
             LevelReefPassage,
             LevelShark,
+            LevelKelp,
             LevelReefDifficult
         ];
 

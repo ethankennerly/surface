@@ -124,6 +124,7 @@ package com.finegamedesign.surface
             elapsed = this.now - previousTime;
             bound();
             block();
+            tangle();
             move();
             sink();
             breathe();
@@ -185,6 +186,24 @@ package com.finegamedesign.surface
                     vector.y = Math.min(0.0, vector.y);
                 }
             }
+        }
+
+        private function tangle():void
+        {
+            if (tangled()) {
+                accumulator += 3.0 * elapsed;
+            }
+        }
+
+        private function tangled():Boolean
+        {
+            var kelps:Array = KelpClip.instances;
+            for (var k:int = 0; k < kelps.length; k++) {
+                if (colliding(kelps[k])) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private function move():void
