@@ -1,6 +1,7 @@
 package com.finegamedesign.surface
 {
     import flash.geom.Point;
+    import flash.geom.Rectangle;
 
     public class Model
     {
@@ -17,7 +18,9 @@ package com.finegamedesign.surface
         internal var diver:Point;
         internal var gravityVector:Number;
         internal var target:Point;
+        internal var rotation:Number;
         internal var vector:Point;
+        private var bounds:Rectangle;
         private var diverWidth:Number = 32;
         private var min:Number = 0.0001;
         private var now:int;
@@ -41,7 +44,7 @@ package com.finegamedesign.surface
         }
 
         internal function populate(level:int, diverX:Number, diverY:Number, surfaceY:Number,
-                pearlClips:Array):void
+                pearlClips:Array, bounds:Rectangle):void
         {
             if (null == levelScores[level]) {
                 levelScores[level] = 0;
@@ -60,6 +63,8 @@ package com.finegamedesign.surface
                 pearls.push(new Point(pearlClips[i].x, pearlClips[i].y));
             }
             diverLabel = "idle";
+            this.bounds = bounds;
+            rotation = 0.0;
         }
 
         internal function strokeToward(x:Number, y:Number):void
@@ -74,10 +79,11 @@ package com.finegamedesign.surface
                 vector.y = speed * (target.y - diver.y) / distance;
                 diverLabel = "swim";
                 diverLabelDirty = true;
+                rotation = headFirst();
             }
         }
 
-        internal function rotation():Number
+        private function headFirst():Number
         {
             var degree:Number = 0.0;
             if (0 < target.x) {
@@ -119,8 +125,18 @@ package com.finegamedesign.surface
 
         private function block():void
         {
-            if (diver.x < diverWidth) {
-                vector.x = 0.0;
+            var blockWidth:Number = diverWidth / 2;
+            if (diver.x - diverWidth < bounds.left) {
+                vector.x = Math.max(0.0, vector.x);
+            }
+            else if (bounds.right < diver.x + diverWidth) {
+                vector.x = Math.min(0.0, vector.x);
+            }
+            if (diver.y - diverWidth < bounds.top) {
+                vector.y = Math.max(0.0, vector.y);
+            }
+            else if (bounds.bottom < diver.y + diverWidth) {
+                vector.y = Math.min(0.0, vector.y);
             }
         }
 

@@ -62,17 +62,13 @@ package com.finegamedesign.surface
         /**
          * position
          * rotation
-         * "idle"
-         * "swim"
-         * "die"
+         * frame
          */
         internal function animate(model:Model, diver:DiverClip):void
         {
             diver.x = model.diver.x;
             diver.y = model.diver.y;
-            var dx:Number = model.target.x - model.diver.x;
-            var dy:Number = model.target.y - model.diver.y;
-            diver.rotation = Math.atan2(dy, dx) * 180.0 / Math.PI;
+            diver.rotation = model.rotation();
             var body:MovieClip = diver.body;
             if (model.animate(body.currentLabel)) {
                 body.gotoAndPlay(model.diverLabel);

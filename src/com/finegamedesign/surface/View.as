@@ -68,7 +68,7 @@ package com.finegamedesign.surface
         {
             diver.x = model.diver.x;
             diver.y = model.diver.y;
-            diver.rotation = model.rotation();
+            diver.rotation = model.rotation;
             var body:MovieClip = diver.body;
             if (model.animate(body.currentLabel)) {
                 body.gotoAndPlay(model.diverLabel);

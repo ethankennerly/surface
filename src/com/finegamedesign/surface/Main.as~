@@ -5,11 +5,12 @@ package com.finegamedesign.surface
     import flash.events.Event;
     import flash.events.MouseEvent;
     import flash.media.Sound;
+    import flash.media.SoundChannel;
     import flash.text.TextField;
     import flash.utils.getTimer;
 
     import org.flixel.plugin.photonstorm.API.FlxKongregate;
-    import com.newgrounds.API;
+    // import com.newgrounds.API;
 
     public dynamic class Main extends MovieClip
     {
@@ -28,8 +29,11 @@ package com.finegamedesign.surface
         [Embed(source="../../../../sfx/die.mp3")]
         private static var dieClass:Class;
         private var die:Sound = new dieClass();
+        private var loop:Sound; // Loop = new Loop();
+        private var loopChannel:SoundChannel;
 
         public var air:MovieClip;
+        public var background:MovieClip;
         public var feedback:MovieClip;
         public var highScore_txt:TextField;
         public var level_txt:TextField;
@@ -83,7 +87,8 @@ package com.finegamedesign.surface
         private function restartTrial(e:MouseEvent):void
         {
             view.clear();
-            lose();
+            next();
+            // lose();
         }
 
         public function load(level:int):void
@@ -91,6 +96,7 @@ package com.finegamedesign.surface
             this.level = level;
             LevelLoader.load(level);
             gotoAndPlay("level");
+            // loopChannel = loop.play(0, int.MAX_VALUE);
         }
 
         public function trial():void
@@ -98,7 +104,7 @@ package com.finegamedesign.surface
             inTrial = true;
             mouseChildren = true;
             model.populate(level, DiverClip.instance.x, DiverClip.instance.y, DiverClip.instance.y,
-                PearlClip.instances);
+                PearlClip.instances, this.background.getRect(this));
             view.populate(model, this);
         }
 
@@ -169,6 +175,9 @@ package com.finegamedesign.surface
         private function reset():void
         {
             PearlClip.instances = [];
+            if (null == loopChannel) {
+                loopChannel.stop();
+            }
         }
 
         private function lose():void
