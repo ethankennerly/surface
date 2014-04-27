@@ -1,5 +1,4 @@
 TODO
-	Approach edge of screen.  Stop.
 	Coral reef.  Collide. stop.
 	Tune exert exhale.
 	level 4

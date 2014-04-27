@@ -1,5 +1,6 @@
 package com.finegamedesign.surface
 {
+    import flash.display.DisplayObject;
     import flash.geom.Point;
     import flash.geom.Rectangle;
 
@@ -64,7 +65,7 @@ package com.finegamedesign.surface
             }
             diverLabel = "idle";
             this.bounds = bounds;
-            rotation = 90.0;
+            rotation = 0.0;
         }
 
         internal function strokeToward(x:Number, y:Number):void
@@ -104,6 +105,7 @@ package com.finegamedesign.surface
             previousTime = 0 <= this.now ? this.now : now;
             this.now = now;
             elapsed = this.now - previousTime;
+            bound();
             block();
             move();
             sink();
@@ -123,7 +125,7 @@ package com.finegamedesign.surface
             return play;
         }
 
-        private function block():void
+        private function bound():void
         {
             var blockWidth:Number = diverWidth / 2;
             if (diver.x - diverWidth < bounds.left) {
@@ -137,6 +139,19 @@ package com.finegamedesign.surface
             }
             else if (bounds.bottom < diver.y + diverWidth) {
                 vector.y = Math.min(0.0, vector.y);
+            }
+        }
+
+        private function block():void
+        {
+            var collision:DisplayObject = LevelLoader.instance["collision"];
+            if (null != collision) {
+                if (collision.hitTestPoint(diver.x, diver.y, true)) {
+                    collision.alpha = 0.5;
+                }
+                else {
+                    collision.alpha = 1.0;
+                }
             }
         }
 
@@ -210,6 +225,7 @@ package com.finegamedesign.surface
                     pearlClips[i].gotoAndPlay("collect");
                     score += 100;
                     pearlsCollected++;
+                    // onContagion();  // why does diver jump?
                 }
             }
         }

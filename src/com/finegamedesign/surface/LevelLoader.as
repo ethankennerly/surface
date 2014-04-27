@@ -9,7 +9,8 @@ package com.finegamedesign.surface
             LevelPearl,
             LevelPearls,
             LevelPearls2,
-            LevelPearlsChooseBest
+            LevelPearlsChooseBest,
+            LevelReef
         ];
 
         internal static var onLoaded:Function;

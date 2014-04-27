@@ -8,7 +8,8 @@ package com.finegamedesign.surface
         internal static var levels:Array = [
             LevelPearl,
             LevelPearls,
-            LevelPearls2
+            LevelPearls2,
+            LevelPearlsChooseBest
         ];
 
         internal static var onLoaded:Function;

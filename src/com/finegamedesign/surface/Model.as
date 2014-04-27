@@ -1,5 +1,6 @@
 package com.finegamedesign.surface
 {
+    import flash.display.DisplayObject;
     import flash.geom.Point;
     import flash.geom.Rectangle;
 
@@ -104,6 +105,7 @@ package com.finegamedesign.surface
             previousTime = 0 <= this.now ? this.now : now;
             this.now = now;
             elapsed = this.now - previousTime;
+            bound();
             block();
             move();
             sink();
@@ -123,20 +125,46 @@ package com.finegamedesign.surface
             return play;
         }
 
-        private function block():void
+        private var blockWidth:Number = diverWidth / 3;
+
+        private function bound():void
         {
-            var blockWidth:Number = diverWidth / 2;
-            if (diver.x - diverWidth < bounds.left) {
+            if (diver.x - blockWidth < bounds.left) {
                 vector.x = Math.max(0.0, vector.x);
             }
-            else if (bounds.right < diver.x + diverWidth) {
+            else if (bounds.right < diver.x + blockWidth) {
                 vector.x = Math.min(0.0, vector.x);
             }
-            if (diver.y - diverWidth < bounds.top) {
+            if (diver.y - blockWidth < bounds.top) {
                 vector.y = Math.max(0.0, vector.y);
             }
-            else if (bounds.bottom < diver.y + diverWidth) {
+            else if (bounds.bottom < diver.y + blockWidth) {
                 vector.y = Math.min(0.0, vector.y);
+            }
+        }
+
+        private function block():void
+        {
+            var collision:DisplayObject = LevelLoader.instance["collision"];
+            if (null != collision) {
+                if (collision.hitTestPoint(diver.x, diver.y, true)) {
+                    collision.alpha = 0.5;
+                }
+                else {
+                    collision.alpha = 1.0;
+                }
+                if (collision.hitTestPoint(diver.x - blockWidth, diver.y, true)) {
+                    vector.x = Math.max(0.0, vector.x);
+                }
+                else if (collision.hitTestPoint(diver.x + blockWidth, diver.y, true)) {
+                    vector.x = Math.min(0.0, vector.x);
+                }
+                if (collision.hitTestPoint(diver.x, diver.y - blockWidth, true)) {
+                    vector.y = Math.max(0.0, vector.y);
+                }
+                else if (collision.hitTestPoint(diver.x, diver.y + blockWidth, true)) {
+                    vector.y = Math.min(0.0, vector.y);
+                }
             }
         }
 
@@ -196,7 +224,7 @@ package com.finegamedesign.surface
 
         private function atSurface():Boolean
         {
-            return diver.y < surfaceY + (diverWidth / 3);
+            return diver.y < surfaceY + blockWidth;
         }
 
         private function collect():void
@@ -210,6 +238,7 @@ package com.finegamedesign.surface
                     pearlClips[i].gotoAndPlay("collect");
                     score += 100;
                     pearlsCollected++;
+                    // onContagion();  // why does diver jump?
                 }
             }
         }

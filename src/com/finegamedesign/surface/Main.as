@@ -14,19 +14,19 @@ package com.finegamedesign.surface
 
     public dynamic class Main extends MovieClip
     {
-        [Embed(source="../../../../sfx/complete.mp3")]
+        [Embed(source="../../../../sfx/chime.mp3")]
         private static var completeClass:Class;
         private var complete:Sound = new completeClass();
-        [Embed(source="../../../../sfx/correct.mp3")]
+        [Embed(source="../../../../sfx/chime.mp3")]
         private static var correctClass:Class;
         private var correct:Sound = new correctClass();
-        [Embed(source="../../../../sfx/wrong.mp3")]
+        [Embed(source="../../../../sfx/die.mp3")]
         private static var wrongClass:Class;
         private var wrong:Sound = new wrongClass();
-        [Embed(source="../../../../sfx/contagion.mp3")]
+        [Embed(source="../../../../sfx/correct.mp3")]
         private static var contagionClass:Class;
         private var contagion:Sound = new contagionClass();
-        [Embed(source="../../../../sfx/die.mp3")]
+        [Embed(source="../../../../sfx/correct.mp3")]
         private static var dieClass:Class;
         private var die:Sound = new dieClass();
         private var loop:Sound; // Loop = new Loop();
