@@ -1,8 +1,4 @@
 TODO
-	select level.
-	level 2:  3 Pearls.  100, 200, 400 points.
-	Help.
-	level 3
 	Approach edge of screen.  Stop.
 	Coral reef.  Collide. stop.
 	Tune exert exhale.
@@ -16,6 +12,7 @@ TODO
 	Hear pearl collection.
 	Air pocket.
 	Shark moving back and forth periodically.  Collide.  float up, fade to black.
+	Animate wave at surface.
 	Air bubble rising from vent periodically.
 	Fish swimming to calibrate speed of shark.
 	Big oyster clamping shut.  Collide.  fade to black.

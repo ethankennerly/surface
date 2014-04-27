@@ -146,7 +146,7 @@ package com.finegamedesign.surface
 
         private function atSurface():Boolean
         {
-            return diver.y < surfaceY + diverWidth;
+            return diver.y < surfaceY + (diverWidth / 4);
         }
 
         private function collect():void

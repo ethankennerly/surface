@@ -22,7 +22,7 @@ package com.finegamedesign.surface
         private var elapsed:Number;
         private var pearls:Array;
         private var pearlClips:Array;
-        private var pearsCollected:int;
+        private var pearlsCollected:int;
         private var previousTime:int;
         private var surfaceY:Number;
 
@@ -146,7 +146,7 @@ package com.finegamedesign.surface
 
         private function atSurface():Boolean
         {
-            return diver.y < surfaceY + diverWidth;
+            return diver.y < surfaceY + (diverWidth / 2);
         }
 
         private function collect():void
