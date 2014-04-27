@@ -1,6 +1,4 @@
 TODO
-	Tune exert exhale.
-	Air pocket.  Refills breath.  Depletes.
 	Shark moving back and forth periodically.  Collide.  float up, fade to black.
 	Kelp.  Slow down.
 	Animate wave going away from body, to help plan route.
@@ -10,6 +8,7 @@ TODO
 	Tune level design.  more pearls at higher levels.  balance risk and reward.
 	Hear surface splash.
 	Hear pearl collection.
+	Tune exert exhale.
 	Submit game jam to Ludum Dare.
 	Post-mortem.
 	Kongegrate.

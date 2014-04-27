@@ -34,6 +34,7 @@ package com.finegamedesign.surface
         private var pearlClips:Array;
         private var pearlsCollected:int;
         private var previousTime:int;
+        private var shark:Shark = new Shark();
         private var surfaceY:Number;
 
         public function Model()
@@ -286,6 +287,18 @@ package com.finegamedesign.surface
             return diver.y < surfaceY + blockWidth;
         }
 
+        private function attacked():Boolean
+        {
+            var sharks:Array = SharkClip.instances;
+            for (var s:int = 0; s < sharks.length; s++) {
+                shark.move(sharks[s], bounds, elapsed);
+                if (colliding(sharks[s])) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private function collect():void
         {
             for (var i:int = pearls.length - 1; 0 <= i; i--) {
@@ -308,6 +321,9 @@ package com.finegamedesign.surface
         private function win():int
         {
             var winning:int = 0 < air ? 0 : -1;
+            if (attacked()) {
+                winning = -1;
+            }
             if (winning <= -1) {
                 diverLabel = "die";
             }

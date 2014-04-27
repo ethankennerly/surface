@@ -69,6 +69,7 @@ package com.finegamedesign.surface
             model.onDie = correct.play;
             model.onDeselect = wrong.play;
             view = new View();
+            updateHudText();
             // trial();
             addEventListener(Event.ENTER_FRAME, update, false, 0, true);
             // level_txt.addEventListener(MouseEvent.CLICK, cheatLevel, false, 0, true);
