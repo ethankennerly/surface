@@ -14,8 +14,6 @@ package com.finegamedesign.surface
         {
         }
 
-        /**
-         */
         internal function populate(model:Model, main:Main):void
         {
             this.model = model;
@@ -43,8 +41,7 @@ package com.finegamedesign.surface
         internal function update():void
         {
             if (DiverClip.instance) {
-                DiverClip.instance.x = model.diver.x;
-                DiverClip.instance.y = model.diver.y;
+                animate(model, DiverClip.instance);
             }
             if (model && main) {
                 gotoFraction(model.air, main.air);
@@ -61,5 +58,23 @@ package com.finegamedesign.surface
         {
             model.clear();
         }
+
+        /**
+         * position
+         * rotation
+         * frame
+         */
+        internal function animate(model:Model, diver:DiverClip):void
+        {
+            diver.x = model.diver.x;
+            diver.y = model.diver.y;
+            diver.rotation = model.rotation();
+            var body:MovieClip = diver.body;
+            if (model.animate(body.currentLabel)) {
+                body.gotoAndPlay(model.diverLabel);
+            }
+        }
+
+        
     }
 }

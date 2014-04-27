@@ -5,6 +5,8 @@ package com.finegamedesign.surface
     public class Model
     {
         internal var air:Number;
+        internal var diverLabel:String;
+        internal var diverLabelDirty:Boolean;
         internal var onContagion:Function;
         internal var onDeselect:Function;
         internal var onDie:Function;
@@ -57,6 +59,7 @@ package com.finegamedesign.surface
             for (var i:int = 0; i < pearlClips.length; i++) {
                 pearls.push(new Point(pearlClips[i].x, pearlClips[i].y));
             }
+            diverLabel = "idle";
         }
 
         internal function strokeToward(x:Number, y:Number):void
@@ -69,9 +72,21 @@ package com.finegamedesign.surface
                 var speed:Number = 0.1;
                 vector.x = speed * (target.x - diver.x) / distance;
                 vector.y = speed * (target.y - diver.y) / distance;
-                target.x = vector.x;
-                target.y = vector.y;
+                diverLabel = "swim";
+                diverLabelDirty = true;
             }
+        }
+
+        internal function rotation():Number
+        {
+            var degree:Number = 0.0;
+            if (0 < target.x) {
+                var dx:Number = target.x - diver.x;
+                var dy:Number = target.y - diver.y;
+                degree = Math.atan2(dy, dx) * 180.0 / Math.PI;
+                degree += 90.0;
+            }
+            return degree;
         }
 
         internal function clear():void
@@ -83,11 +98,30 @@ package com.finegamedesign.surface
             previousTime = 0 <= this.now ? this.now : now;
             this.now = now;
             elapsed = this.now - previousTime;
+            block();
             move();
             sink();
             breathe();
             collect();
             return win();
+        }
+
+        internal function animate(currentLabel:String):Boolean
+        {
+            var play:Boolean = false;
+            if (diverLabel 
+                    && (diverLabel != currentLabel || diverLabelDirty)) {
+                play = true;
+                diverLabelDirty = false;
+            }
+            return play;
+        }
+
+        private function block():void
+        {
+            if (diver.x < diverWidth) {
+                vector.x = 0.0;
+            }
         }
 
         private function move():void
@@ -146,7 +180,7 @@ package com.finegamedesign.surface
 
         private function atSurface():Boolean
         {
-            return diver.y < surfaceY + (diverWidth / 4);
+            return diver.y < surfaceY + (diverWidth / 3);
         }
 
         private function collect():void
@@ -170,7 +204,10 @@ package com.finegamedesign.surface
         private function win():int
         {
             var winning:int = 0 < air ? 0 : -1;
-            if (0 <= winning) {
+            if (winning <= -1) {
+                diverLabel = "die";
+            }
+            else if (0 <= winning) {
                 if (1 <= pearlsCollected && atSurface()) {
                     winning = 1;
                 }
