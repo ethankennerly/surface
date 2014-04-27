@@ -179,6 +179,7 @@ package com.finegamedesign.surface
             PearlClip.instances = [];
             AirPocketClip.instances = [];
             SharkClip.instances = [];
+            KelpClip.instances = [];
             if (null != loopChannel) {
                 loopChannel.stop();
             }

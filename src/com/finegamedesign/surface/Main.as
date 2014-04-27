@@ -198,7 +198,7 @@ package com.finegamedesign.surface
 
         public function next():void
         {
-            feedback.gotoAndPlay("none");
+            // feedback.gotoAndPlay("none");
             mouseChildren = true;
             restart();
         }
