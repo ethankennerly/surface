@@ -1,22 +1,23 @@
 TODO
-	Coral reef.  Collide. stop.
 	Tune exert exhale.
-	level 4
-	level 5
-	Hear swim stroke.
-	Hear surface splash.
-	Hear pearl collection.
+	Read score.
 	Air pocket.
 	Shark moving back and forth periodically.  Collide.  float up, fade to black.
 	Animate wave at surface.
 	Air bubble rising from vent periodically.
 	Kelp.
+	Animate wave going away from body, to help plan route.
+	Animate air bubbles everytime you stroke.
+	Illustrate air supply with bulges to count stroke limit.
+	Hear swim stroke.
+	Hear surface splash.
+	Hear pearl collection.
 	Fish swimming to calibrate speed of shark.
 	Big oyster clamping shut.  Collide.  fade to black.
 	Catch a fish.  score as a pearl.
+	Oyster.
 	Octopus.  Up and down.
 	Jellyfish.
-	Animate click target point or direction.
 	Reverse flappy bird:  float up if do nothing.
 	Animate pearl.
 
