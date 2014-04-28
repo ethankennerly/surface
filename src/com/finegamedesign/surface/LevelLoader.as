@@ -10,14 +10,22 @@ package com.finegamedesign.surface
             LevelPearls,
             LevelPearls2,
             LevelPearlsChooseBest,
+            LevelPearls3,
+            LevelPearlsChooseBest2,
             LevelReef,
             LevelReefModerate,
             LevelAir,
             LevelReefPassage,
             LevelShark,
             LevelKelp,
+            LevelAirKelp,
             LevelAirShark,
-            LevelReefDifficult
+            LevelKelpShark,
+            LevelAirKelpShark,
+            LevelReefDifficult,
+            LevelAir3KelpShark,
+            LevelAirKelpShark4,
+            LevelAir3KelpShark4
         ];
 
         internal static var onLoaded:Function;

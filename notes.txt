@@ -1,11 +1,5 @@
 TODO
 	Level with air and shark.
-	Level with kelp and air.
-	Level with kelp and shark.
-	Level with air, kelp and shark.
-	Level with 2 shark.
-	Interpolate lower levels.
-	Level with air and shark.
 	Level with kelp and shark.
 	Level with air, kelp and shark.
 	Level with air, kelp and shark.
