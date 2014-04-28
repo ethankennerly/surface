@@ -25,7 +25,7 @@ package com.finegamedesign.surface
             var columnWidth:int = 80;
             for (var i:int = 0; i < LevelLoader.levels.length; i++) {
                 var tile:LevelTile = new LevelTile();
-                tile.x = columnWidth * ((i % columnCount) - (columnCount / 2 - 1));
+                tile.x = columnWidth * ((i % columnCount) - ((columnCount - 1) / 2));
                 tile.y = columnWidth * int(i / columnCount);
                 var level:int = i + 1;
                 tile.txt.text = level.toString();

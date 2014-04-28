@@ -1,7 +1,5 @@
 TODO
-	Animate air bubbles everytime you stroke.
-	About out of air.  Blink air.  
-	Illustrate air supply with bulges to count stroke limit.
+	20 levels.
 	Animate wave going away from body, to help plan route.
 	Hear swim stroke.
 	Tune level design.  more pearls at higher levels.  balance risk and reward.
